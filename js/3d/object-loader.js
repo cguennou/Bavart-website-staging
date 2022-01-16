@@ -92,7 +92,7 @@
 	        });
 
         //
-        renderer = new THREE.CanvasRenderer({ alpha: true });
+        renderer = new THREE.WebGLRenderer({ alpha: true });
         renderer.outputEncoding = THREE.sRGBEncoding;
         renderer.setClearColor( 0x000000, 0 );
         //renderer.setPixelRatio( window.devicePixelRatio );
