@@ -104,9 +104,15 @@
 
         //
         //document.addEventListener( "mousemove", onDocumentMouseMove, false );
-        //window.addEventListener( "resize", onWindowResize, false );
+        window.addEventListener( "resize", onWindowResize, false );
+        render();
     }
 
+    function render() {
+        requestAnimationFrame( render ); 
+        renderer.render(scene, camera); 
+    }
+    
     function onDocumentMouseMove( event ) {
         mouseX = ( event.clientX - windowHalfX ) / 4;
         mouseY = ( event.clientY - windowHalfY ) / 4;
@@ -132,11 +138,11 @@
 
     }
 
-    function render() {
+    /*function render() {
         
         camera.lookAt( scene.position );
         renderer.render( scene, camera );
 
-    }
+    }*/
 
 })();
