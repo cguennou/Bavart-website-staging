@@ -47,13 +47,44 @@
         light4.position.set(500, 0, 10);
         scene.add( light4 );
 
-        loader = new THREE.JSONLoader();
-        loader.load( '3d/deer.js', function ( geometry ) {
+        // objects
+        //loader = new THREE.JSONLoader();
+        const loader = new GLTFLoader();
+        /*loader.load( '3d/deer.js', function ( geometry ) {
             mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( { color: 0xffffff, overdraw: 0.5 } ) );
             mesh.position.y = 20;
             mesh.scale.set(2.9,2.9,2.9);
             scene.add( mesh );
-        } );
+        } );*/
+
+        // Load a glTF resource
+        loader.load(
+	        // resource URL
+	        '3d/scene.gltf',
+	        // called when the resource is loaded
+	        function ( gltf ) {
+
+                scene.add( gltf.scene );
+
+                gltf.animations; // Array<THREE.AnimationClip>
+                gltf.scene; // THREE.Group
+                gltf.scenes; // Array<THREE.Group>
+                gltf.cameras; // Array<THREE.Camera>
+                gltf.asset; // Object
+
+            },
+	        // called while loading is progressing
+	        function ( xhr ) {
+
+		    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+	        },
+	        // called when loading has errors
+	        function ( error ) {
+
+	        	console.log( 'An error happened' );
+
+	        });
 
         //
 
