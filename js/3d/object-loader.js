@@ -63,7 +63,7 @@
         // Load a glTF resource
         loader.load(
 	        // resource URL
-	        './3d/Buste.gltf',
+	        './3d/v4_buste02_idlle002.gltf',
 	        // called when the resource is loaded
 	        function ( gltf ) {
 
