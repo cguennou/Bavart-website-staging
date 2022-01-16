@@ -68,7 +68,7 @@
 	        function ( gltf ) {
 
                 mesh = gltf.scene;
-                mesh.scale.set( 400, 400, 400 );
+                mesh.scale.set( 50, 50, 50 );
                 scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
