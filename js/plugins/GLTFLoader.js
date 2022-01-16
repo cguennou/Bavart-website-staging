@@ -218,7 +218,6 @@
 			}
 
 			const json = JSON.parse( content );
-            console.log(content);
 
 			if ( json.asset === undefined || json.asset.version[ 0 ] < 2 ) {
 
