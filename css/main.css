@@ -417,18 +417,17 @@ main {
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 0.875rem;
     position: absolute;
+    background-image: radial-gradient(50% 100%, #eccece 50%, #965d5d 100%);
     z-index: 2;
     left: 50%;
     margin-left: -30px; }
     .hero__trigger-button.top {
-      top: 40px;
-      transform: rotate(270deg); }
+      top: 40px; }
       .hero__trigger-button.top:hover {
         opacity: 1;
         top: 35px; }
     .hero__trigger-button.bottom {
-      bottom: 40px;
-      transform: rotate(270deg); }
+      bottom: 40px;}
       .hero__trigger-button.bottom:hover {
         opacity: 1;
         bottom: 35px; }
