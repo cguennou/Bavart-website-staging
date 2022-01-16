@@ -17,7 +17,7 @@
     var windowHalfY = window.innerHeight / 2;
 
     init();
-    animate();
+    //animate();
 
     function init() {
         var hero = document.getElementById("hero");
@@ -94,14 +94,14 @@
         //
         renderer = new THREE.CanvasRenderer({ alpha: true });
         renderer.outputEncoding = THREE.sRGBEncoding;
-        //renderer.setClearColor( 0x000000, 0 );
+        renderer.setClearColor( 0x000000, 0 );
         //renderer.setPixelRatio( window.devicePixelRatio );
-        //enderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setSize( window.innerWidth, window.innerHeight );
         container.appendChild( renderer.domElement );
 
         //
-        document.addEventListener( "mousemove", onDocumentMouseMove, false );
-        window.addEventListener( "resize", onWindowResize, false );
+        //document.addEventListener( "mousemove", onDocumentMouseMove, false );
+        //window.addEventListener( "resize", onWindowResize, false );
     }
 
     function onDocumentMouseMove( event ) {
