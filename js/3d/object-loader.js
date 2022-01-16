@@ -1,4 +1,4 @@
-import { GLTFLoader } from 'https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js'
+//import { GLTFLoader } from 'https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js'
 
 (function() {
     "use strict";
@@ -51,7 +51,7 @@ import { GLTFLoader } from 'https://cdn.rawgit.com/mrdoob/three.js/master/exampl
 
         // objects
         //loader = new THREE.JSONLoader();
-        var loader = new GLTFLoader();
+        var loader = new THREE.GLTFLoader();
         /*loader.load( '3d/deer.js', function ( geometry ) {
             mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( { color: 0xffffff, overdraw: 0.5 } ) );
             mesh.position.y = 20;
