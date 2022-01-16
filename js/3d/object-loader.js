@@ -51,17 +51,17 @@
 
         
         // objects
-        //loader = new THREE.JSONLoader();
-        var loader = new THREE.GLTFLoader();
-        /*loader.load( '3d/deer.js', function ( geometry ) {
+        loader = new THREE.JSONLoader();
+        //var loader = new THREE.GLTFLoader();
+        loader.load( '3d/deer.js', function ( geometry ) {
             mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( { color: 0xffffff, overdraw: 0.5 } ) );
             mesh.position.y = 20;
             mesh.scale.set(2.9,2.9,2.9);
             scene.add( mesh );
-        } );*/
+        } );
 
         // Load a glTF resource
-        loader.load(
+        /*loader.load(
 	        // resource URL
 	        '3d/v4_buste02_idlle002.glb',
 	        // called when the resource is loaded
@@ -87,7 +87,7 @@
 
 	        	console.log( 'An error happened' );
 
-	        });
+	        });*/
 
         //
         renderer = new THREE.CanvasRenderer({ alpha: true });
