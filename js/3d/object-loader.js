@@ -63,7 +63,7 @@
         // Load a glTF resource
         loader.load(
 	        // resource URL
-	        'https://cdn.jsdelivr.net/gh/siouxcitizen/3DModel@a1c2e47550ca20de421f6d779229f66efab07830/yuusha.gltf',
+	        '3d/v4_buste02_idlle002.glb',
 	        // called when the resource is loaded
 	        function ( gltf ) {
 
