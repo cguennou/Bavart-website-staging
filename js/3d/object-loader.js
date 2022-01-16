@@ -67,7 +67,9 @@
 	        // called when the resource is loaded
 	        function ( gltf ) {
 
-                scene.add( gltf.scene );
+                mesh = gltf.scene;
+                mesh.scale.set( 100, 100, 100 );
+                scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
                 gltf.scene; // THREE.Group
@@ -95,8 +97,9 @@
         renderer = new THREE.WebGLRenderer({ alpha: true });
         renderer.outputEncoding = THREE.sRGBEncoding;
         renderer.setClearColor( 0x000000, 0 );
-        //renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.gammaOutput = true;
         container.appendChild( renderer.domElement );
 
         //
