@@ -44,7 +44,7 @@
 
         // objects
         //loader = new THREE.JSONLoader();
-        var loader = new THREE.GLTFLoader();
+        var loader = new GLTFLoader();
         /*loader.load( '3d/deer.js', function ( geometry ) {
             mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( { color: 0xffffff, overdraw: 0.5 } ) );
             mesh.position.y = 20;
