@@ -49,6 +49,7 @@
         light4.position.set(500, 0, 10);
         scene.add( light4 );
 
+        /*
         // objects
         //loader = new THREE.JSONLoader();
         var loader = new THREE.GLTFLoader();
@@ -57,7 +58,7 @@
             mesh.position.y = 20;
             mesh.scale.set(2.9,2.9,2.9);
             scene.add( mesh );
-        } );*/
+        } );
 
         // Load a glTF resource
         loader.load(
@@ -89,12 +90,11 @@
 	        });
 
         //
-
         renderer = new THREE.CanvasRenderer({ alpha: true });
         renderer.setClearColor( 0x000000, 0 );
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
-        container.appendChild( renderer.domElement );
+        container.appendChild( renderer.domElement );*/
 
         //
         document.addEventListener( "mousemove", onDocumentMouseMove, false );
