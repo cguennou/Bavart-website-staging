@@ -17,7 +17,7 @@
     var windowHalfY = window.innerHeight / 2;
 
     init();
-    //animate();
+    animate();
 
     function init() {
         var hero = document.getElementById("hero");
@@ -68,7 +68,7 @@
 	        function ( gltf ) {
 
                 mesh = gltf.scene;
-                mesh.scale.set( 100, 100, 100 );
+                mesh.scale.set( 200, 200, 200 );
                 scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
@@ -108,10 +108,10 @@
         render();
     }
 
-    function render() {
+    /*function render() {
         requestAnimationFrame( render ); 
         renderer.render(scene, camera); 
-    }
+    }*/
     
     function onDocumentMouseMove( event ) {
         mouseX = ( event.clientX - windowHalfX ) / 4;
@@ -138,11 +138,11 @@
 
     }
 
-    /*function render() {
+    function render() {
         
         camera.lookAt( scene.position );
         renderer.render( scene, camera );
 
-    }*/
+    }
 
 })();
