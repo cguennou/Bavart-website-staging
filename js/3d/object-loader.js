@@ -68,7 +68,7 @@
 	        function ( gltf ) {
 
                 mesh = gltf.scene;
-                mesh.scale.set( 200, 200, 200 );
+                mesh.scale.set( 400, 400, 400 );
                 scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
@@ -129,8 +129,8 @@
 
     function animate() {
 
-        camera.position.x += ( -mouseX - camera.position.x ) * .03;
-        camera.position.y += ( mouseY - 80 - camera.position.y ) * .03;
+        camera.position.x += ( -mouseX - camera.position.x ) * .05;
+        camera.position.y += ( mouseY - 80 - camera.position.y ) * .05;
 
         requestAnimationFrame( animate );
 
