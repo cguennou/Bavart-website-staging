@@ -93,9 +93,10 @@
 
         //
         renderer = new THREE.CanvasRenderer({ alpha: true });
-        renderer.setClearColor( 0x000000, 0 );
-        renderer.setPixelRatio( window.devicePixelRatio );
-        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        //renderer.setClearColor( 0x000000, 0 );
+        //renderer.setPixelRatio( window.devicePixelRatio );
+        //enderer.setSize( window.innerWidth, window.innerHeight );
         container.appendChild( renderer.domElement );
 
         //
