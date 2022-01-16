@@ -60,7 +60,7 @@
         } );*/
 
         // Load a glTF resource
-        loader.load(
+        /*loader.load(
 	        // resource URL
 	        '3d/scene.gltf',
 	        // called when the resource is loaded
@@ -86,7 +86,7 @@
 
 	        	console.log( 'An error happened' );
 
-	        });
+	        });*/
 
         //
 
