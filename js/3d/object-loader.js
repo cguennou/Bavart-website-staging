@@ -49,11 +49,11 @@
         light4.position.set(500, 0, 10);
         scene.add( light4 );
 
-        /*
+        
         // objects
         //loader = new THREE.JSONLoader();
         var loader = new THREE.GLTFLoader();
-        /*loader.load( '3d/deer.js', function ( geometry ) {
+        loader.load( '3d/deer.js', function ( geometry ) {
             mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( { color: 0xffffff, overdraw: 0.5 } ) );
             mesh.position.y = 20;
             mesh.scale.set(2.9,2.9,2.9);
@@ -89,7 +89,7 @@
 
 	        });
 
-        //*/
+        //
         renderer = new THREE.CanvasRenderer({ alpha: true });
         renderer.setClearColor( 0x000000, 0 );
         renderer.setPixelRatio( window.devicePixelRatio );
