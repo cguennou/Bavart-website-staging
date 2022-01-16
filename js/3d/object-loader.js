@@ -63,12 +63,12 @@
         // Load a glTF resource
         loader.load(
 	        // resource URL
-	        '3d/v4_buste02_idlle002.glb',
+	        'https://cdn.jsdelivr.net/gh/siouxcitizen/3DModel@a1c2e47550ca20de421f6d779229f66efab07830/yuusha.gltf',
 	        // called when the resource is loaded
 	        function ( gltf ) {
 
                 mesh = gltf.scene;
-                mesh.scale.set( 100, 100, 100 );
+                mesh.scale.set( 10, 10, 10 );
                 scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
