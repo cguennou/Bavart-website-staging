@@ -403,10 +403,13 @@ THREE.Projector = function () {
 		if ( scene.autoUpdate === true ) scene.updateMatrixWorld();
 		if ( camera.parent === null ) camera.updateMatrixWorld();
 
-		_viewMatrix.copy( camera.matrixWorldInverse.getInverse( camera.matrixWorld ) );
+		//THREE.Matrix4: .getInverse() has been removed. Use matrixInv.copy( matrix ).invert(); instead.
+
+		//_viewMatrix.copy( camera.matrixWorldInverse.getInverse( camera.matrixWorld ) );
+		_viewMatrix.copy( camera.matrixWorldInverse.invert( camera.matrixWorld ) );
 		_viewProjectionMatrix.multiplyMatrices( camera.projectionMatrix, _viewMatrix );
 
-		_frustum.setFromMatrix( _viewProjectionMatrix );
+		_frustum.setFromProjectionMatrix( _viewProjectionMatrix );
 
 		//
 
