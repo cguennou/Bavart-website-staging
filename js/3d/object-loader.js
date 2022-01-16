@@ -68,7 +68,7 @@
 	        function ( gltf ) {
 
                 mesh = gltf.scene;
-                mesh.scale.set( 10, 10, 10 );
+                mesh.scale.set( 100, 100, 100 );
                 scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
@@ -103,7 +103,7 @@
         container.appendChild( renderer.domElement );
 
         //
-        //document.addEventListener( "mousemove", onDocumentMouseMove, false );
+        document.addEventListener( "mousemove", onDocumentMouseMove, false );
         window.addEventListener( "resize", onWindowResize, false );
         render();
     }
