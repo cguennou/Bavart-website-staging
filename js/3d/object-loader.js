@@ -54,7 +54,7 @@
         // Load a glTF resource
         loader.load(
 	        // resource URL
-	        '3d/buste/scene.gltf',
+	        '3d/venus_of_townley/scene.gltf',
 	        // called when the resource is loaded
 	        function ( gltf ) {
 

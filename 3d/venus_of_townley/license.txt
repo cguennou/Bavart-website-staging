@@ -1,0 +1,11 @@
+Model Information:
+* title:	Venus of Townley
+* source:	https://sketchfab.com/3d-models/venus-of-townley-c23fd84260ad4f5cb929eab694b29921
+* author:	Rem (https://sketchfab.com/Rem.Petitjean)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Venus of Townley" (https://sketchfab.com/3d-models/venus-of-townley-c23fd84260ad4f5cb929eab694b29921) by Rem (https://sketchfab.com/Rem.Petitjean) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

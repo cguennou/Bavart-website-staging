@@ -1,0 +1,222 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 9214,
+      "max": [
+        37.542118072509766,
+        20.557897567749023,
+        71.1293716430664
+      ],
+      "min": [
+        -27.361194610595703,
+        -20.598257064819336,
+        -58.875064849853516
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 110568,
+      "componentType": 5126,
+      "count": 9214,
+      "max": [
+        0.9993897676467896,
+        0.9997627139091492,
+        0.9999951124191284
+      ],
+      "min": [
+        -0.9996781945228577,
+        -0.9996947646141052,
+        -0.9999991059303284
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 9214,
+      "max": [
+        1.3870079517364502,
+        1.342296838760376
+      ],
+      "min": [
+        -0.20372271537780762,
+        -0.8587105870246887
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 9252,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Rem (https://sketchfab.com/Rem.Petitjean)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/venus-of-townley-c23fd84260ad4f5cb929eab694b29921",
+      "title": "Venus of Townley"
+    },
+    "generator": "Sketchfab-11.41.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 37008,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 73712,
+      "byteOffset": 37008,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 221136,
+      "byteOffset": 110720,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 331856,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5713525799243437,
+          0.5713525799243437,
+          0.5713525799243437,
+          1.0
+        ],
+        "roughnessFactor": 0.34768365944716706
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "5100 BM Aphrodite Standing.003_Material.002_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.7751453518867493,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.7211684341916761e-16,
+        -0.7751453518867493,
+        0.0,
+        0.0,
+        0.7751453518867493,
+        1.7211684341916761e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "2724b64b9f7e466a9b5191f450293dee.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        0.09236528894050405,
+        -1.1859781368141766e-07,
+        -2.0343644318535317,
+        0.0,
+        -2.034364431846801,
+        -5.2453543379597625e-06,
+        -0.0923652889398927,
+        0.0,
+        -5.234575384727747e-06,
+        2.0364594459466105,
+        -3.563829050755539e-07,
+        0.0,
+        0.0,
+        118.76165008544922,
+        0.0,
+        1.0
+      ],
+      "name": "5100 BM Aphrodite Standing.003"
+    },
+    {
+      "mesh": 0,
+      "name": "5100 BM Aphrodite Standing.003_Material.002_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
