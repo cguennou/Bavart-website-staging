@@ -1,0 +1,11 @@
+Model Information:
+* title:	Buste02_Idle002
+* source:	https://sketchfab.com/3d-models/buste02-idle002-a4b4a2b3f248487f8d7da9076b2bc469
+* author:	BavartApp (https://sketchfab.com/BavartApp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Buste02_Idle002" (https://sketchfab.com/3d-models/buste02-idle002-a4b4a2b3f248487f8d7da9076b2bc469) by BavartApp (https://sketchfab.com/BavartApp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
