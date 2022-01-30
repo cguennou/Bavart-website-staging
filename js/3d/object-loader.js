@@ -60,7 +60,16 @@
 
                 mesh = gltf.scene;
                 mesh.scale.set( 1, 1, 1 );
-                scene.add( mesh );
+
+                var box = new THREE.Box3().setFromObject( mesh );
+                box.center( mesh.position ); // this re-sets the mesh position
+                mesh.position.multiplyScalar( - 1 );
+
+                var pivot = new THREE.Group();
+                scene.add( pivot );
+                pivot.add( mesh );
+
+                //scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
                 gltf.scene; // THREE.Group
