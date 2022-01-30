@@ -59,7 +59,7 @@
 	        function ( gltf ) {
 
                 mesh = gltf.scene;
-                mesh.scale.set( 1, 1, 1 );
+                mesh.scale.set( 50, 50, 50 );
 
                 var box = new THREE.Box3().setFromObject( mesh );
                 box.center( mesh.position ); // this re-sets the mesh position
