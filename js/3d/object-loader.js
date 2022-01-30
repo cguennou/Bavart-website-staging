@@ -54,7 +54,7 @@
         // Load a glTF resource
         loader.load(
 	        // resource URL
-	        '3d/great_wave_off_kanagawa/scene.gltf',
+	        '3d/buste/scene.gltf',
 	        // called when the resource is loaded
 	        function ( gltf ) {
 
