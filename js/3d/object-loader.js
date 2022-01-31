@@ -4,12 +4,42 @@
     "use strict";
 
     var container;
-    var camera, scene, renderer, composer, controls, clock, mixer;
+    var camera, scene, renderer, composer, controls, clock, mixer, sprite;
     var loader, mesh, controls;
     var light1, light2, light3, light4, light;
     var mouseX = 0, mouseY = 0;
     var windowHalfX = window.innerWidth / 2;
     var windowHalfY = window.innerHeight / 2;
+
+    // Number
+
+    const canvas = document.getElementById("number");
+    const ctx = canvas.getContext("2d");
+    const x = 32;
+    const y = 32;
+    const radius = 30;
+    const startAngle = 0;
+    const endAngle = Math.PI * 2;
+
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.beginPath();
+    ctx.arc(x, y, radius, startAngle, endAngle);
+    ctx.fill();
+
+    ctx.strokeStyle = "rgb(255, 255, 255)";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(x, y, radius, startAngle, endAngle);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgb(255, 255, 255)";
+    ctx.font = "32px sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("1", x, y);
+
+    const annotation = document.querySelector(".annotation");
+    let spriteBehindObject;
 
     init();
     animate();
@@ -118,6 +148,28 @@
 	        	console.log( 'An error happened' );
 	        });
 
+        // Sprite
+
+        const numberTexture = new THREE.CanvasTexture(
+            document.querySelector("#number")
+        );
+
+        const spriteMaterial = new THREE.SpriteMaterial({
+            map: numberTexture,
+            alphaTest: 0.5,
+            transparent: true,
+            depthTest: false,
+            depthWrite: false
+        });
+
+        sprite = new THREE.Sprite(spriteMaterial);
+        sprite.position.set(20, -10, 3);
+        sprite.scale.set(60, 60, 1);
+
+        scene.add(sprite);
+        
+        //Render
+
         renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.outputEncoding = THREE.sRGBEncoding;
         renderer.shadowMap.enabled = true;
@@ -134,6 +186,8 @@
         //document.addEventListener( "mousemove", onDocumentMouseMove, false );
         //document.addEventListener( "touchmove", onDocumentTouchMove , false );
 
+        //Controls
+
         controls = new OrbitControls( camera, renderer.domElement );
         controls.minDistance = 220;
         controls.maxDistance = 1000;
@@ -144,7 +198,7 @@
 		controls.minPolarAngle = 0.8;
 		controls.maxPolarAngle = 2.4;
 		controls.dampingFactor = 0.07;
-		controls.rotateSpeed = 0.25;
+		controls.rotateSpeed = 0.35;
         controls.enableRotate = true;
         controls.enabled = true;
 
@@ -193,6 +247,34 @@
   
         if ( mixer ) mixer.update( delta );
         renderer.render( scene, camera );
+
+        updateAnnotationOpacity();
+        updateScreenPosition();
+    }
+
+    function updateAnnotationOpacity() {
+        const meshDistance = camera.position.distanceTo(mesh.position);
+        const spriteDistance = camera.position.distanceTo(sprite.position);
+        spriteBehindObject = spriteDistance > meshDistance;
+        sprite.material.opacity = spriteBehindObject ? 0.25 : 1;
+    
+        // Do you want a number that changes size according to its position?
+        // Comment out the following line and the `::before` pseudo-element.
+        sprite.material.opacity = 0;
+    }
+    
+    function updateScreenPosition() {
+        const vector = new THREE.Vector3(20, -10, 3);
+        const canvas = renderer.domElement;
+    
+        vector.project(camera);
+    
+        vector.x = Math.round((0.5 + vector.x / 2) * (canvas.width / window.devicePixelRatio));
+        vector.y = Math.round((0.5 - vector.y / 2) * (canvas.height / window.devicePixelRatio));
+    
+        annotation.style.top = `${vector.y}px`;
+        annotation.style.left = `${vector.x}px`;
+        annotation.style.opacity = spriteBehindObject ? 0.25 : 1;
     }
 
 })();

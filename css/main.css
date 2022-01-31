@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Cyber;
+  src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
+  font-display: swap;
+}
+
 .unslider {
   overflow: auto;
   margin: 0;
@@ -245,6 +251,66 @@ h6 {
     transform: translate3d(0, 100%, 0); }
   to {
     transform: translate3d(0, 0, 0); } }
+@keyframes glitch {
+  0% {
+    clip-path: var(--clip-one);
+  }
+  2%, 8% {
+    clip-path: var(--clip-two);
+    transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+  }
+  6% {
+    clip-path: var(--clip-two);
+    transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+  }
+  9% {
+    clip-path: var(--clip-two);
+    transform: translate(0, 0);
+  }
+  10% {
+    clip-path: var(--clip-three);
+    transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+  }
+  13% {
+    clip-path: var(--clip-three);
+    transform: translate(0, 0);
+  }
+  14%, 21% {
+    clip-path: var(--clip-four);
+    transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+  }
+  25% {
+    clip-path: var(--clip-five);
+    transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+  }
+  30% {
+    clip-path: var(--clip-five);
+    transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+  }
+  35%, 45% {
+    clip-path: var(--clip-six);
+    transform: translate(calc(var(--shimmy-distance) * -1%));
+  }
+  40% {
+    clip-path: var(--clip-six);
+    transform: translate(calc(var(--shimmy-distance) * 1%));
+  }
+  50% {
+    clip-path: var(--clip-six);
+    transform: translate(0, 0);
+  }
+  55% {
+    clip-path: var(--clip-seven);
+    transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+  }
+  60% {
+    clip-path: var(--clip-seven);
+    transform: translate(0, 0);
+  }
+  31%, 61%, 100% {
+    clip-path: var(--clip-four);
+  }
+}
 main .meta.social {
   bottom: 1.875rem;
   left: 1.25rem; }
@@ -266,7 +332,7 @@ main .meta.social {
         main .meta.social ul li {
           display: inline-block; }
           main .meta.social ul li:after {
-            font-size: 0.5625rem;
+            font-size: 0.6625rem;
             content: "/";
             display: inline-block;
             margin-left: 0.3125rem;
@@ -277,7 +343,7 @@ main .meta.social {
         display: inline-block;
         overflow: hidden;
         color: #979797;
-        font-size: 0.875rem;
+        font-size: 0.975rem;
         vertical-align: middle; }
         main .meta.social ul li a span {
           position: relative;
@@ -288,7 +354,7 @@ main .meta.social {
             top: 200%;
             content: attr(data-hover);
             transform: translate3d(0, 0, 0);
-            font-size: 0.875rem;
+            font-size: 0.975rem;
             color: #353535; }
         main .meta.social ul li a:hover, main .meta.social ul li a:focus {
           opacity: 1; }
@@ -364,28 +430,6 @@ main {
         margin: 0;
         color: #979797; }
 
-.grain {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  pointer-events: none; }
-  .grain:before {
-    content: "";
-    background: url("../images/glitch.jpg") no-repeat 50% 50% fixed;
-    background-size: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 98;
-    pointer-events: none;
-    animation: shift 6s ease-in-out infinite alternate; }
-
-.no-csspointerevents .grain {
-  display: none; }
-
 .hero {
   position: absolute;
   z-index: 1;
@@ -415,27 +459,54 @@ main {
     opacity: .5; }  
     
   .hero__trigger-button {
-    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans-serif;
-    font-size: 0.875rem;
-    position: absolute;
-    z-index: 2;
-    filter: drop-shadow(0px 4px 4px rgba(247, 247, 247, 0.753));
-    background-color: #141d2c;
-    border: 0 solid #E5E7EB;
-    box-sizing: border-box;
-    color: #030303;
-    border: 1px solid #757575;
-    display: flex;
-    justify-content: center;
-    line-height: 1.75rem;
-    width: 100%;
-    padding: 0 0;
-    max-width: 150px;
-    text-align: center;
-    text-decoration: none #af2c2c solid;
-    text-decoration-thickness: auto;
+    --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%));
+    --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
+    --primary-hue: 0;
+    --primary-lightness: 50;
+    --color: hsl(0, 0%, 100%);
+    --font-size: 26px;
+    --shadow-primary-hue: 180;
+    --label-size: 9px;
+    --shadow-secondary-hue: 60;
+    --shadow-secondary: hsl(var(--shadow-secondary-hue), 90%, 60%);
+    --clip: polygon(0 0, 100% 0, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 70%);
+    --border: 4px;
+    --shimmy-distance: 5;
+    --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
+    --clip-two: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
+    --clip-three: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
+    --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+    --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+    --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
+    --clip-seven: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
+    font-family: 'Cyber', sans-serif;
+    color: var(--color);
     cursor: pointer;
-    transform: rotate(-2deg);
+    background: transparent;
+    font-size: var(--font-size);
+    outline: transparent;
+    letter-spacing: 2px;
+    position: absolute;
+    font-weight: 700;
+    border: 0;
+    min-width: 300px;
+    height: 75px;
+    line-height: 75px;
+    transition: background 0.2s;
+    z-index: 2;
+  }
+  .hero__trigger-button::before, .hero__trigger-button::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: var(--clip);
+    z-index: -1;
+  }
+  .hero__trigger-button::before{
+    transform: translate(var(--border), 0);
   }
     .hero__trigger-button.top {
       top: 40px;
@@ -443,14 +514,26 @@ main {
       .hero__trigger-button.top:hover {
         opacity: 1;
         top: 35px;
-        left: 50%; }
+        left: 50%; 
+      }
+      .hero__trigger-button.top:active {
+        opacity: 1;
+        top: 35px;
+        left: 50%; 
+      }
     .hero__trigger-button.bottom {
       bottom: 40px;
       left: 50%;}
       .hero__trigger-button.bottom:hover {
         opacity: 1;
         bottom: 35px;
-        left: 50%;}
+        left: 50%;
+      }
+      .hero__trigger-button.bottom:active {
+        opacity: 1;
+        bottom: 35px;
+        left: 50%;
+      }
     .hero__trigger-button.left {
       left: 0px;
       top: 50%;
@@ -475,6 +558,30 @@ main {
         right: 0.1rem;
         top: 50%;
         transform: rotate(90deg); }
+  .hero__trigger-button__glitch {
+    position: absolute;
+    top: calc(var(--border) * -1);
+    left: calc(var(--border) * -1);
+    right: calc(var(--border) * -1);
+    bottom: calc(var(--border) * -1);
+    text-shadow: 2px 2px var(--shadow-primary), -2px -2px var(--shadow-secondary);
+    clip-path: var(--clip);
+    animation: glitch 2s infinite;
+    display: none;
+  }
+  .hero__trigger-button:hover .hero__trigger-button__glitch{
+    display: block;
+  }
+  .hero__trigger-button__glitch:before {
+    content: '';
+    position: absolute;
+    top: calc(var(--border) * 1);
+    right: calc(var(--border) * 1);
+    bottom: calc(var(--border) * 1);
+    left: calc(var(--border) * 1);
+    clip-path: var(--clip);
+    z-index: -1;
+  }
   .hero.sphere, .hero.field {
     background: #FBFFFF; }
 
@@ -492,6 +599,48 @@ main {
       color: #D9E1E9; }
   .hero.dark .meta.sound a {
     background-image: url("../images/icon-sound-light.png"); }
+
+.annotation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    margin-left: 15px;
+    margin-top: 15px;
+    padding: 1em;
+    width: 200px;
+    color: #fff;
+    background: rgba(32, 31, 31, 0.8);
+    border-radius: .5em;
+    font-size: 12px;
+    line-height: 1.2;
+    transition: opacity .5s;
+}
+  .annotation::before {
+      content: '+';
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      font-size: 16px;
+      line-height: 30px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+  }
+  
+#number {
+    position: absolute;
+    z-index: 3;
+}
+
+canvas {
+  width: 100%;
+  height: 100px;
+  display: block;
+}
 
 .about {
   position: absolute;
