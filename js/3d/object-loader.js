@@ -22,9 +22,7 @@
 
         // camera
         camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 2, 1500 );
-        camera.position.z = 400;
-        camera.position.y = 10000;
-        camera.position.x = 10000;
+        camera.position.z = 300;
 
         // scene
         scene = new THREE.Scene();
@@ -38,18 +36,22 @@
         light1 = new THREE.PointLight( 0xffffff, .15, 0, Math.PI / 2, 1  );
         light1.position.set(0, -80, 500);
         light1.castShadow = true;
+        light1.shadowDarkness = 0.5;
         scene.add( light1 );
         light2 = new THREE.PointLight( 0xffffff, .35, 0, Math.PI / 2, 1  );
         light2.position.set(0, 500, 0);
         light2.castShadow = true;
+        light2.shadowDarkness = 0.5;
         scene.add( light2 );
         light3 = new THREE.PointLight( 0xffffff, .32, 0, Math.PI / 2, 1  );
         light3.position.set(-500, 0, 10);
         light3.castShadow = true;
+        light3.shadowDarkness = 0.5;
         scene.add( light3 );
         light4 = new THREE.PointLight( 0xffffff, .2, 0, Math.PI / 2, 1  );
         light4.position.set(500, 0, 10);
         light4.castShadow = true;
+        light4.shadowDarkness = 0.5;
         scene.add( light4 );
 
         var ambientLight = new THREE.AmbientLight( 0xcccccc );
@@ -70,7 +72,7 @@
                 //mesh.scale.set( 60, 60, 60 );
                 //mesh.rotation.y = - Math.PI / 2;
                 mesh.castShadow = true;
-                mesh.receiveShadow = false;
+                mesh.receiveShadow = true;
 
                 var box = new THREE.Box3().setFromObject( mesh );
                 box.center( mesh.position ); // this re-sets the mesh position
@@ -139,6 +141,29 @@
         light.shadow.camera.near = 0.5; // default
         light.shadow.camera.far = 500; // default
         
+        //////////////////////////////////////////////////////////////////////////////////
+        //		Ground
+        //////////////////////////////////////////////////////////////////////////////////
+
+        /*var geometry	= new THREE.BoxGeometry( window.innerWidth * 0.1, window.innerHeight*0.1, 2);
+        var texture	= new THREE.TextureLoader().load('images/water.jpg');
+        texture.repeat.set( 0.5, 0.8 );
+        texture.wrapS	= texture.wrapT = THREE.RepeatWrapping;
+        var material	= new THREE.MeshPhongMaterial({
+            ambient		: 0x444444,
+            color		: 0x66aa66,
+            shininess	: 150, 
+            specular	: 0x888888,
+            flatShading		: THREE.SmoothShading,
+            map		: texture
+        });
+        var ground		= new THREE.Mesh( geometry, material );
+        ground.scale.multiplyScalar(3);
+        ground.position.y		= -62;
+        ground.rotation.x = -Math.PI / 2;
+        scene.add( ground );
+        ground.castShadow	= false;
+        ground.receiveShadow	= true;*/
 
 
         //Create a sphere that cast shadows (but does not receive them)
@@ -161,10 +186,21 @@
 
         controls = new OrbitControls( camera, renderer.domElement );
         controls.minDistance = 200;
-        controls.maxDistance = 1000
-        controls.target.set(0, 100, 300);
-        controls.update();
+        controls.maxDistance = 1000;
+        //controls.enableDamping = true;
+        //controls.dampingFactor = 0.25;
+        controls.enableZoom = true;
+        //controls.target.set(100, 100, 400);
 
+        controls.enablePan = false; 
+		controls.enableDamping = true;
+		controls.minPolarAngle = 0.8;
+		controls.maxPolarAngle = 2.4;
+		controls.dampingFactor = 0.07;
+		controls.rotateSpeed = 0.07;
+
+        controls.update();
+        camera.position.y = 160;
         window.addEventListener( "resize", onWindowResize, false );
         //render();
     }
@@ -187,7 +223,7 @@
     function animate() {
 
         camera.position.x += ( -mouseX - camera.position.x ) * .5;
-        camera.position.y += ( mouseY - 80 - camera.position.y ) * .5;
+        camera.position.y += ( mouseY - camera.position.y ) * .5;
 
         requestAnimationFrame( animate );
         light.position.x = 1000 * Math.sin(Date.now() / 480);
@@ -199,7 +235,8 @@
 
     function render() {
         
-        camera.lookAt( scene.position );
+        console.log(camera.position.y);
+        camera.lookAt( scene.position);
         //camera.position.y = 100;
         var delta = clock.getDelta();
   
