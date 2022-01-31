@@ -22,7 +22,7 @@
 
         // camera
         camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 1, 1500 );
-        camera.position.z = 300;
+        camera.position.z = 250;
 
         // scene
         scene = new THREE.Scene();
@@ -95,7 +95,7 @@
                     mixer.clipAction( clip ).play();
                 });
 
-                //scene.add( mesh );
+                scene.add( mesh );
 
                 gltf.animations; // Array<THREE.AnimationClip>
                 gltf.scene; // THREE.Group
@@ -131,24 +131,26 @@
 
         container.appendChild( renderer.domElement );
 
-        document.addEventListener( "mousemove", onDocumentMouseMove, false );
+        //document.addEventListener( "mousemove", onDocumentMouseMove, false );
         //document.addEventListener( "touchmove", onDocumentTouchMove , false );
 
         controls = new OrbitControls( camera, renderer.domElement );
-        controls.minDistance = 200;
+        controls.minDistance = 220;
         controls.maxDistance = 1000;
         controls.enableZoom = true;
-        //controls.target.set(100, 100, 400);
 
         controls.enablePan = false; 
 		controls.enableDamping = true;
 		controls.minPolarAngle = 0.8;
 		controls.maxPolarAngle = 2.4;
 		controls.dampingFactor = 0.07;
-		controls.rotateSpeed = 0.07;
+		controls.rotateSpeed = 0.25;
+        controls.enableRotate = true;
+        controls.enabled = true;
 
         controls.update();
-        camera.position.y = 160;
+        camera.position.y = 80;
+        camera.position.x = 50;
         window.addEventListener( "resize", onWindowResize, false );
     }
 
@@ -174,8 +176,8 @@
 
     function animate() {
 
-        camera.position.x += ( -mouseX - camera.position.x ) * .5;
-        camera.position.y += ( mouseY - camera.position.y ) * .5;
+        //camera.position.x += ( -mouseX - camera.position.x ) * .5;
+        //camera.position.y += ( mouseY - camera.position.y ) * .5;
 
         requestAnimationFrame( animate );
         light.position.x = 1000 * Math.sin(Date.now() / 480);
@@ -187,9 +189,9 @@
 
     function render() {
         camera.lookAt( scene.position);
-        //var delta = clock.getDelta();
+        var delta = clock.getDelta();
   
-        //if ( mixer ) mixer.update( delta );
+        if ( mixer ) mixer.update( delta );
         renderer.render( scene, camera );
     }
 
