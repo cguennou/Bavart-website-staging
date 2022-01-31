@@ -390,8 +390,24 @@ main .close-button {
   transition: bottom .3s ease-in-out, opacity 1s ease-in-out;
   bottom: -2.5rem;
   top: auto;
+  margin-left: -1.875rem;}
+
+main .close-button-up {
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans-serif;
+  left: 50%;
+  position: absolute;
+  font-size: 0.975rem;
+  background: #2b6161;
+  transition: bottom .3s ease-in-out, opacity 1s ease-in-out;
+  letter-spacing: 2px;
+  font-weight: 700;
+  min-width: 150px;
+  height: 75px;
+  line-height: 75px;
+  bottom: -2.5rem;
   margin-left: -1.875rem;
-  transform: rotate(270deg); }
+  top: auto;
+}
 
 .queryloader__overlay__bar {
   background: #979797 !important;
@@ -674,6 +690,12 @@ canvas {
       .about.active-screen .close-button:hover {
         opacity: 1;
         bottom: 1.875rem; }
+    .about.active-screen .close-button-up {
+      opacity: 1;
+      bottom: 2.5rem;}
+      .about.active-screen .close-button-up:hover {
+        opacity: 1;
+        bottom: 1.875rem;}
   .about__content {
     position: relative;
     width: 100%; }
@@ -833,6 +855,10 @@ canvas {
       .work.active-screen .close-button:hover {
         opacity: 1;
         bottom: 2.1875rem; }
+    .work.active-screen .close-button-up {
+      opacity: 1;}
+      .work.active-screen .close-button-up:hover {
+        opacity: 1;}
   .work__content {
     position: relative;
     width: 100%; }
