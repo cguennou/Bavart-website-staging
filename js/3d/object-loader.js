@@ -198,7 +198,7 @@
 		controls.minPolarAngle = 0.8;
 		controls.maxPolarAngle = 2.4;
 		controls.dampingFactor = 0.07;
-		controls.rotateSpeed = 0.35;
+		controls.rotateSpeed = 0.75;
         controls.enableRotate = true;
         controls.enabled = true;
 
