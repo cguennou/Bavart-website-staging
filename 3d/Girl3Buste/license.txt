@@ -1,0 +1,11 @@
+Model Information:
+* title:	Painted02_SK_Buste02_Idle001
+* source:	https://sketchfab.com/3d-models/painted02-sk-buste02-idle001-bbea6219527345c78bf9a5b6b0e7c6bc
+* author:	BavartApp (https://sketchfab.com/BavartApp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Painted02_SK_Buste02_Idle001" (https://sketchfab.com/3d-models/painted02-sk-buste02-idle001-bbea6219527345c78bf9a5b6b0e7c6bc) by BavartApp (https://sketchfab.com/BavartApp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

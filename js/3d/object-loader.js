@@ -4,7 +4,7 @@
     "use strict";
 
     var container;
-    var camera, scene, renderer, composer, controls, clock, mixer, sprite;
+    var camera, scene, renderer, composer, controls, clock, mixer, sprite, mixer2, mixer3;
     var loader, mesh, controls;
     var light1, light2, light3, light4, light;
     var mouseX = 0, mouseY = 0;
@@ -93,61 +93,86 @@
         var loader = new THREE.GLTFLoader();
 
         // Load a glTF resource
-        loader.load(
-	        // resource URL
-	        '3d/GirlBuste/scene.gltf',
-	        // called when the resource is loaded
-	        function ( gltf ) {
+        //loader.load('3d/GirlBuste/scene.gltf', onLoad);
 
-                mesh = gltf.scene;
-                mesh.scale.set( 200, 200, 200 );
+        let model2, model3, _gltf1, _gltf2, _gltf3;
+        let p1 = loadModel('3d/GirlBuste/scene.gltf').then(result => {  mesh = result.scene.children[0]; _gltf1 = result});
+        let p2 = loadModel('3d/Girl3Buste/scene.gltf').then(result => {  model2 = result.scene.children[0]; _gltf2 = result});
+        let p3 = loadModel('3d/Girl2Buste/scene.gltf').then(result => {  model3 = result.scene.children[0]; _gltf3 = result});
 
-                var box = new THREE.Box3().setFromObject( mesh );
-                box.center( mesh.position ); // this re-sets the mesh position
-                mesh.position.multiplyScalar( - 10 );
-
-                mesh.traverse( function ( child ) {
-
-                    if ( child.isMesh ) {
+        Promise.all([p1,p2,p3]).then(() => {
+            //do something to the model
+            mesh.position.set(0,0,0);
             
-                        child.castShadow = true;
-                        //child.receiveShadow = true;
-                    }
-                });
+            model3.position.set(-100,0,0);
 
-                var pivot = new THREE.Group();
-                scene.add( pivot );
-                pivot.add( mesh );
+            mesh.scale.set(180, 180, 180);
+            model2.scale.set(180, 180, 180);
+            model3.scale.set(180, 180, 180);
 
-                mixer = new THREE.AnimationMixer( gltf.scene );
+            mesh.position.multiplyScalar( - 10 );
+            mesh.traverse( function ( child ) {
+    
+                if ( child.isMesh ) {
         
-                gltf.animations.forEach( ( clip ) => {
-                    mixer.clipAction( clip ).play();
-                });
+                    child.castShadow = true;
+                    //child.receiveShadow = true;
+                }
+            });
+            
+            mesh.position.set(0,-45, 0);
+            scene.add( mesh );
+            
+            mixer = new THREE.AnimationMixer( mesh);
+    
+            _gltf1.animations.forEach( ( clip ) => {
+                mixer.clipAction( clip ).play();
+            });
+            scene.add( mesh );
 
-                scene.add( mesh );
+            model2.position.multiplyScalar( - 10 );
+            model2.traverse( function ( child ) {
+    
+                if ( child.isMesh ) {
+        
+                    child.castShadow = true;
+                    //child.receiveShadow = true;
+                }
+            });
+    
+            model2.position.set(100,-45,0);
+            scene.add( model2 );
+            
+            mixer2 = new THREE.AnimationMixer( model2);
+    
+            _gltf2.animations.forEach( ( clip ) => {
+                mixer2.clipAction( clip ).play();
+            });
+            scene.add(model2);
 
-                gltf.animations; // Array<THREE.AnimationClip>
-                gltf.scene; // THREE.Group
-                gltf.scenes; // Array<THREE.Group>
-                gltf.cameras; // Array<THREE.Camera>
-                gltf.asset; // Object
+            model3.position.multiplyScalar( - 10 );
+            model3.traverse( function ( child ) {
+    
+                if ( child.isMesh ) {
+        
+                    child.castShadow = true;
+                    //child.receiveShadow = true;
+                }
+            });
+    
+            model3.position.set(-100,-45,0);
+            scene.add( model2 );
+            
+            mixer3 = new THREE.AnimationMixer( model3);
+    
+            _gltf3.animations.forEach( ( clip ) => {
+                mixer3.clipAction( clip ).play();
+            });
+            scene.add(model3);
+            
+         });
 
-            },
-	        // called while loading is progressing
-	        function ( xhr ) {
-
-		    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-            console.log(xhr.loaded);
-            console.log(xhr.total);
-            console.log(THREE.REVISION)
-
-	        },
-	        // called when loading has errors
-	        function ( error ) {
-	        	console.log( 'An error happened' );
-	        });
-
+        //loader.load('3d/GirlBuste/scene.gltf', onLoad);
         // Sprite
 
         const numberTexture = new THREE.CanvasTexture(
@@ -163,7 +188,7 @@
         });
 
         sprite = new THREE.Sprite(spriteMaterial);
-        sprite.position.set(20, -10, 3);
+        sprite.position.set(20, 0, 3);
         sprite.scale.set(60, 60, 1);
 
         scene.add(sprite);
@@ -204,11 +229,29 @@
 
         controls.update();
         camera.position.y = 80;
-        camera.position.x = 50;
+        camera.position.x = 0;
         window.addEventListener( "resize", onWindowResize, false );
     }
 
-    
+    function loadModel(url) {
+        return new Promise(resolve => {
+          new THREE.GLTFLoader().load(url, resolve);
+        });
+    }
+    // called while loading is progressing
+    /*function ( xhr ) {
+
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    console.log(xhr.loaded);
+    console.log(xhr.total);
+    console.log(THREE.REVISION)
+
+    },
+    // called when loading has errors
+    function ( error ) {
+        console.log( 'An error happened' );
+    }*/
+
     function onDocumentMouseMove( event ) {
         mouseX = ( event.clientX - windowHalfX ) / 4;
         mouseY = ( event.clientY - windowHalfY ) / 4;
@@ -246,6 +289,8 @@
         var delta = clock.getDelta();
   
         if ( mixer ) mixer.update( delta );
+        if ( mixer2 ) mixer2.update( delta );
+        if ( mixer3 ) mixer3.update( delta );
         renderer.render( scene, camera );
 
         updateAnnotationOpacity();
@@ -264,7 +309,7 @@
     }
     
     function updateScreenPosition() {
-        const vector = new THREE.Vector3(20, -10, 3);
+        const vector = new THREE.Vector3(17, 0, 2);
         const canvas = renderer.domElement;
     
         vector.project(camera);
