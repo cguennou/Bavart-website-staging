@@ -121,13 +121,13 @@
             });
             
             mesh.position.set(0,-45, 0);
-            scene.add( mesh );
             
             mixer = new THREE.AnimationMixer( mesh);
     
             _gltf1.animations.forEach( ( clip ) => {
                 mixer.clipAction( clip ).play();
             });
+            mesh.frustumCulled = false;
             scene.add( mesh );
 
             model2.position.multiplyScalar( - 10 );
@@ -141,13 +141,13 @@
             });
     
             model2.position.set(100,-45,0);
-            scene.add( model2 );
             
             mixer2 = new THREE.AnimationMixer( model2);
     
             _gltf2.animations.forEach( ( clip ) => {
                 mixer2.clipAction( clip ).play();
             });
+            model2.frustumCulled = false;
             scene.add(model2);
 
             model3.position.multiplyScalar( - 10 );
@@ -161,13 +161,13 @@
             });
     
             model3.position.set(-100,-45,0);
-            scene.add( model2 );
             
             mixer3 = new THREE.AnimationMixer( model3);
     
             _gltf3.animations.forEach( ( clip ) => {
                 mixer3.clipAction( clip ).play();
             });
+            model3.frustumCulled = false;
             scene.add(model3);
             
          });
