@@ -129,7 +129,6 @@
             _gltf1.animations.forEach( ( clip ) => {
                 mixer.clipAction( clip ).play();
             });
-            mesh.frustumCulled =  !1;
             
             scene.add( mesh );
 
@@ -151,7 +150,6 @@
             _gltf2.animations.forEach( ( clip ) => {
                 mixer2.clipAction( clip ).play();
             });
-            model2.frustumCulled = !1;
             scene.add(model2);
 
             model3.position.multiplyScalar( - 10 );
@@ -172,7 +170,6 @@
             _gltf3.animations.forEach( ( clip ) => {
                 mixer3.clipAction( clip ).play();
             });
-            model3.frustumCulled = !1;
             scene.add(model3);
             
          });
@@ -304,8 +301,7 @@
         //renderer.render( scene, camera );
 
         renderer.render( scene, camera );
-
-        updateAnnotationOpacity();
+        if (mesh !== undefined) {updateAnnotationOpacity();}
         updateScreenPosition();
     }
 
