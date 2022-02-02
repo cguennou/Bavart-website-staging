@@ -4,7 +4,7 @@
     "use strict";
 
     var container;
-    var camera, scene, renderer, composer, controls, clock, mixer, sprite, mixer2, mixer3;
+    var camera, scene, renderer, composer, controls, clock, mixer, sprite, mixer2, mixer3, model2, model3;
     var loader, mesh, controls;
     var light1, light2, light3, light4, light;
     var mouseX = 0, mouseY = 0;
@@ -51,8 +51,9 @@
         hero.appendChild( container );
 
         // camera
-        camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 1, 1500 );
+        camera = new THREE.PerspectiveCamera( 25, (window.innerWidth) / window.innerHeight, 0.05, 1500 );
         camera.position.z = 250;
+        console.log("Coucou");
 
         // scene
         scene = new THREE.Scene();
@@ -95,7 +96,7 @@
         // Load a glTF resource
         //loader.load('3d/GirlBuste/scene.gltf', onLoad);
 
-        let model2, model3, _gltf1, _gltf2, _gltf3;
+        let _gltf1, _gltf2, _gltf3;
         let p1 = loadModel('3d/GirlBuste/scene.gltf').then(result => {  mesh = result.scene.children[0]; _gltf1 = result});
         let p2 = loadModel('3d/Girl3Buste/scene.gltf').then(result => {  model2 = result.scene.children[0]; _gltf2 = result});
         let p3 = loadModel('3d/Girl2Buste/scene.gltf').then(result => {  model3 = result.scene.children[0]; _gltf3 = result});
@@ -116,6 +117,7 @@
                 if ( child.isMesh ) {
         
                     child.castShadow = true;
+                    child.frustumCulled = false;
                     //child.receiveShadow = true;
                 }
             });
@@ -127,7 +129,8 @@
             _gltf1.animations.forEach( ( clip ) => {
                 mixer.clipAction( clip ).play();
             });
-            mesh.frustumCulled = false;
+            mesh.frustumCulled =  !1;
+            
             scene.add( mesh );
 
             model2.position.multiplyScalar( - 10 );
@@ -136,6 +139,7 @@
                 if ( child.isMesh ) {
         
                     child.castShadow = true;
+                    child.frustumCulled = false;
                     //child.receiveShadow = true;
                 }
             });
@@ -147,7 +151,7 @@
             _gltf2.animations.forEach( ( clip ) => {
                 mixer2.clipAction( clip ).play();
             });
-            model2.frustumCulled = false;
+            model2.frustumCulled = !1;
             scene.add(model2);
 
             model3.position.multiplyScalar( - 10 );
@@ -156,6 +160,7 @@
                 if ( child.isMesh ) {
         
                     child.castShadow = true;
+                    child.frustumCulled = false;
                     //child.receiveShadow = true;
                 }
             });
@@ -167,7 +172,7 @@
             _gltf3.animations.forEach( ( clip ) => {
                 mixer3.clipAction( clip ).play();
             });
-            model3.frustumCulled = false;
+            model3.frustumCulled = !1;
             scene.add(model3);
             
          });
@@ -291,6 +296,13 @@
         if ( mixer ) mixer.update( delta );
         if ( mixer2 ) mixer2.update( delta );
         if ( mixer3 ) mixer3.update( delta );
+
+        //model2.onBeforeRender = function () { this.userData.inView = true; } 
+
+        // render loop
+        //scene.traverse( function ( child ) { child.userData.inView = false } );
+        //renderer.render( scene, camera );
+
         renderer.render( scene, camera );
 
         updateAnnotationOpacity();
