@@ -460,7 +460,7 @@ main {
     --primary-hue: 0;
     --primary-lightness: 50;
     --color: hsl(0, 0%, 100%);
-    --font-size: 15px;
+    --font-size: 14px;
     --shadow-primary-hue: 180;
     --label-size: 9px;
     --shadow-secondary-hue: 60;
@@ -485,9 +485,10 @@ main {
     position: absolute;
     font-weight: 700;
     border: 0;
-    min-width: 300px;
-    height: 75px;
-    line-height: 75px;
+    min-width: 150px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
     transition: background 0.2s;
     z-index: 2;
   }
@@ -507,24 +508,33 @@ main {
   }
     .hero__trigger-button.top {
       top: 40px;
-      left: 50%; }
+      left: 50%;
+      right: 50%; }
       @media (min-width: 768px) {
         .hero__trigger-button.top {
           --font-size: 20px;
-          font-size: var(--font-size);} }
+          font-size: var(--font-size);
+          height: 30px;
+          line-height: 30px;
+          left: 50%;
+          right: 50%;
+          min-width: 300px;} }
       @media (min-width: 992px) {
         .hero__trigger-button.top {
           --font-size: 26px;
-          font-size: var(--font-size);} }
+          font-size: var(--font-size);
+          height: 36px;
+          line-height: 36px;
+          left: 50%;
+          right: 50%;
+          min-width: 300px;} }
       .hero__trigger-button.top:hover {
         opacity: 1;
-        top: 35px;
-        left: 50%; 
+        top: 35px; 
       }
       .hero__trigger-button.top:active {
         opacity: 1;
         top: 35px;
-        left: 50%; 
       }
     .hero__trigger-button.bottom {
       bottom: 40px;
@@ -532,11 +542,21 @@ main {
       @media (min-width: 768px) {
         .hero__trigger-button.bottom {
           --font-size: 20px;
-          font-size: var(--font-size);} }
+          font-size: var(--font-size);
+          height: 30px;
+          line-height: 30px;
+          left: 50%;
+          right: 50%;
+          min-width: 300px;} }
       @media (min-width: 992px) {
         .hero__trigger-button.bottom {
           --font-size: 26px;
-          font-size: var(--font-size);} }
+          font-size: var(--font-size);
+          height: 36px;
+          line-height: 36px;
+          left: 50%;
+          right: 50%;
+          min-width: 300px;} }
       .hero__trigger-button.bottom:hover {
         opacity: 1;
         bottom: 35px;
