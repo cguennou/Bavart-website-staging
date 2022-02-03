@@ -123,7 +123,10 @@ body {
   overflow: hidden; }
   body img {
     max-width: 100%;
-    height: auto; }
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
 
 a,
 a:active {
@@ -194,8 +197,10 @@ h3 {
 
 h4 {
   font-family: 'Cyber', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0; }
+  font-size: 1.5rem;
+  letter-spacing: 0; 
+  text-align: center;
+  margin-top: 20px;}
   @media (min-width: 768px) {
     h4 {
       font-size: 1.125rem; } }
@@ -332,7 +337,7 @@ main .meta.social {
         main .meta.social ul li {
           display: inline-block; }
           main .meta.social ul li:after {
-            font-size: 0.8625rem;
+            font-size: 0.9625rem;
             content: "/";
             display: inline-block;
             margin-left: 0.3125rem;
@@ -343,7 +348,7 @@ main .meta.social {
         display: inline-block;
         overflow: hidden;
         color: #979797;
-        font-size: 1.075rem;
+        font-size: 1.3rem;
         vertical-align: middle; }
         main .meta.social ul li a span {
           position: relative;
@@ -354,7 +359,7 @@ main .meta.social {
             top: 200%;
             content: attr(data-hover);
             transform: translate3d(0, 0, 0);
-            font-size: 1.075rem;
+            font-size: 1.3rem;
             color: #353535; }
         main .meta.social ul li a:hover, main .meta.social ul li a:focus {
           opacity: 1; }
@@ -637,6 +642,7 @@ main {
     position: absolute;
     top: 0;
     left: 0;
+    font-family: 'Cyber', sans-serif;
     z-index: 3;
     margin-left: 15px;
     margin-top: 15px;
@@ -649,6 +655,14 @@ main {
     line-height: 1.2;
     transition: opacity .5s;
 }
+@media (min-width: 768px) {
+  .annotation {
+    font-size: 19px;
+    width: 240px; } }
+@media (min-width: 992px) {
+  .annotation{
+    font-size: 22px;
+    width: 280px; } }
   .annotation::before {
       content: '+';
       position: absolute;
@@ -680,7 +694,7 @@ canvas {
   z-index: 2;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: rgb(240, 240, 240);
   overflow-y: scroll; }
   .about.idle {
     pointer-events: none;
@@ -706,7 +720,7 @@ canvas {
       bottom: 2.5rem; }
       .about.active-screen .close-button:hover {
         opacity: 1;
-        bottom: 1.875rem; }
+        bottom: 2.0rem; }
   .about__content {
     position: relative;
     width: 100%; }
@@ -865,7 +879,7 @@ canvas {
       bottom: 2.5rem; }
       .work.active-screen .close-button:hover {
         opacity: 1;
-        bottom: 2.1875rem; }
+        bottom: 2.2rem; }
   .work__content {
     position: relative;
     width: 100%; }
